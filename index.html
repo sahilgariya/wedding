@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Wedding Invitation 💌</title>
+  <style>
+    body {
+      background-color: #ffe6f0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+
+    h2 {
+      color: #b30059;
+    }
+
+    #letter {
+      font-size: 100px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    #letter:hover {
+      transform: scale(1.1);
+    }
+
+    #invitation {
+      display: none;
+      margin-top: 30px;
+    }
+
+    #invitation img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Click the letter to open your invitation</h2>
+
+  <div id="letter">💌</div>
+
+  <div id="invitation">
+    <img src="invitation.jpg" alt="Wedding Invitation">
+  </div>
+
+  <script>
+    document.getElementById("letter").onclick = function() {
+      document.getElementById("letter").style.display = "none";
+      document.getElementById("invitation").style.display = "block";
+    };
+  </script>
+
+</body>
+</html>
