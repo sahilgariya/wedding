@@ -1,70 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Wedding Invitation 💌</title>
   <style>
     body {
-      background-color: #ffe6f0;
-      font-family: Arial, sans-serif;
       margin: 0;
-      height: 90vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-item: center;
-      text-align: center;
-    }
-
-    h2 {
-      color: #b30059;
-    }
-
-    #letter {
-      font-size: 180px;
-      cursor: pointer;
-      transition: transform 0.3s;
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      padding: 0;
+      font-family: sans-serif;
+      background: url('IMG_20250731_183421.jpg')  no-repeat center center fixed;
+      background-size: cover;
       height: 100vh;
-      margin: auto;
-    }
-    
-    #letter:hover {
-      transform: scale(1.1);
-    }
-
-    #invitation {
-      display: none;
-      margin-top: 30px;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
     }
 
-    #invitation img {
-      max-width: 100%;
+    .container {
+      text-align: center;
+      position: relative;
+      margin-bottom: 40px;
+    }
+
+    .instruction {
+      color: brown;
+      font-weight: bold;
+      font-size: 1.1em;
+      margin-bottom: 10px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .letter {
+      width: 120px;
+      cursor: pointer;
+      transition: transform 1s ease-in-out;
+      position: relative;
+    }
+
+    .letter.opened {
+      transform: translateY(-300px); /* slide up */
+    }
+
+    .invitation-image {
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      position: absolute;
+      bottom: 150px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .invitation-image.show {
+      opacity: 1;
+    }
+
+    .invitation-image img {
+      max-width: 90vw;
       height: auto;
-      border-radius: 20px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      border: 4px solid white;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
     }
   </style>
 </head>
 <body>
-
-  <h2>Click the letter to open your invitation</h2>
-
-  <div id="letter">💌</div>
-
-  <div id="invitation">
-    <img src="invitation.jpg" alt="Wedding Invitation">
+  <div class="container">
+    <p class="instruction">Click the letter to open your invitation</p>
+    <img src="IMG_20250731_183345.jpg" alt="Letter with Heart" class="letter" id="letter" onclick="openInvitation()" />
+    <div class="invitation-image" id="invitation">
+      <img src="IMG_20250731_183445.jpg" alt="Invitation" />
+    </div>
   </div>
 
   <script>
-    document.getElementById("letter").onclick = function() {
-      document.getElementById("letter").style.display = "none";
-      document.getElementById("invitation").style.display = "block";
-    };
-  </script>
+    function openInvitation() {
+      const letter = document.getElementById("letter");
+      const invitation = document.getElementById("invitation");
+      const instruction = document.querySelector(".instruction");
 
+      letter.classList.add("opened");
+      invitation.classList.add("show");
+      instruction.style.display = "none";
+    }
+  </script>
 </body>
 </html>
