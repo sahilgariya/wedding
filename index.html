@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Wedding Invitation 💌</title>
   <style>
@@ -9,7 +9,7 @@
       margin: 0;
       padding: 0;
       font-family: sans-serif;
-      background: url('IMG_20250731_183421.jpg')  no-repeat center center fixed;
+      background: url('IMG_20250731_183421.jpg') no-repeat center center fixed;
       background-size: cover;
       height: 100vh;
       overflow: hidden;
@@ -17,77 +17,58 @@
       justify-content: center;
       align-items: flex-end;
     }
-
     .container {
-      text-align: center;
       position: relative;
-      margin-bottom: 40px;
+      text-align: center;
+      margin-bottom: 20px; /* extra space at bottom */
     }
-
     .instruction {
       color: brown;
       font-weight: bold;
       font-size: 1.1em;
       margin-bottom: 10px;
-      animation: fadeIn 1s ease-in-out;
     }
-
     .letter {
       width: 120px;
       cursor: pointer;
-      transition: transform 1s ease-in-out;
       position: relative;
+      transition: transform 1s ease-in-out;
     }
-
     .letter.opened {
-      transform: translateY(-300px); /* slide up */
+      transform: translateY(-400px); /* slide up further */
     }
-
     .invitation-image {
       opacity: 0;
       transition: opacity 1s ease-in-out;
       position: absolute;
-      bottom: 150px;
+      bottom: 200px; /* show the invitation well above */
       left: 50%;
       transform: translateX(-50%);
     }
-
     .invitation-image.show {
       opacity: 1;
     }
-
     .invitation-image img {
       max-width: 90vw;
-      height: auto;
       border: 4px solid white;
       border-radius: 12px;
       box-shadow: 0 0 20px rgba(0,0,0,0.3);
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.9); }
-      to { opacity: 1; transform: scale(1); }
     }
   </style>
 </head>
 <body>
   <div class="container">
     <p class="instruction">Click the letter to open your invitation</p>
-    <img src="IMG_20250731_183345.jpg" alt="Letter with Heart" class="letter" id="letter" onclick="openInvitation()" />
-    <div class="invitation-image" id="invitation">
-      <img src="IMG_20250731_183445.jpg" alt="Invitation" />
+    <img src="IMG_20250731_183345.jpg" alt="Letter" id="letter" class="letter" onclick="openInvitation()"/>
+    <div id="invitation" class="invitation-image">
+      <img src="invitation.jpg" alt="Invitation"/>
     </div>
   </div>
-
   <script>
     function openInvitation() {
-      const letter = document.getElementById("letter");
-      const invitation = document.getElementById("invitation");
-      const instruction = document.querySelector(".instruction");
-
-      letter.classList.add("opened");
-      invitation.classList.add("show");
-      instruction.style.display = "none";
+      document.getElementById('letter').classList.add('opened');
+      document.getElementById('invitation').classList.add('show');
+      document.querySelector('.instruction').style.display = 'none';
     }
   </script>
 </body>
